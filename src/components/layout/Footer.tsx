@@ -22,16 +22,23 @@ const paymentIcons = ["Visa", "MC", "Amex", "GPay", "APay", "PayPal"];
 export function Footer() {
   return (
     <footer className="relative bg-brand-black text-white overflow-hidden">
-      {/* Branded watermark background */}
+      {/* Large branded watermark background - spans footer width */}
       <div
-        className="pointer-events-none absolute bottom-0 right-0 text-[200px] font-heading font-bold text-brand-yellow opacity-5 leading-none"
-        style={{
-          transform: "rotate(-15deg) translateY(20px) translateX(20px)",
-          zIndex: 0,
-        }}
+        className="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden"
+        style={{ zIndex: 0 }}
         aria-hidden="true"
       >
-        Wattl.
+        <div
+          className="font-heading font-black text-brand-yellow leading-none whitespace-nowrap"
+          style={{
+            fontSize: "clamp(300px, 60vw, 800px)",
+            opacity: 0.08,
+            transform: "rotate(-12deg) translateY(15%) translateX(10%)",
+            textShadow: "0 4px 20px rgba(0,0,0,0.3)",
+          }}
+        >
+          Wattl.
+        </div>
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1200px] px-4 py-12 md:px-6 md:py-16">

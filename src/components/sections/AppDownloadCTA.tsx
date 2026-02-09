@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { AppStoreBadges } from "@/components/ui/AppStoreBadges";
 
 export function AppDownloadCTA() {
   return (
@@ -29,49 +30,14 @@ export function AppDownloadCTA() {
             <em className="not-italic text-brand-yellow">Power.</em>
           </h2>
 
-          <p className="mx-auto mb-10 max-w-md text-gray-400">
+          <p className="mx-auto mb-12 max-w-md text-gray-400">
             Download Wattl. now to locate stations and rent powerbanks
             instantly. Join the network that keeps you connected anywhere,
             anytime.
           </p>
 
-          {/* App store badges */}
-          <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-brand-black shadow-lg transition-shadow hover:shadow-xl"
-              aria-label="Download on the App Store"
-            >
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M18.71 19.71a1 1 0 001.42-1.42L12.66 7.26a1 1 0 00-1.32 0l-7.47 11.03a1 1 0 001.42 1.42L12 9.41z" />
-              </svg>
-              <span className="ml-2">App Store</span>
-            </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-brand-black shadow-lg transition-shadow hover:shadow-xl"
-              aria-label="Get it on Google Play"
-            >
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M3.5 19.5h17v-15h-17z" />
-              </svg>
-              <span className="ml-2">Google Play</span>
-            </motion.a>
-          </div>
+          {/* Official app store badges */}
+          <AppStoreBadges />
 
           {/* Leaf accent */}
           <div className="pointer-events-none mt-8 text-3xl opacity-15">

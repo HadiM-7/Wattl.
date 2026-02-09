@@ -5,7 +5,9 @@
       "Bash(npm run build:*)",
       "Bash(python verify_design.py:*)",
       "Bash(playwright install:*)",
-      "Bash($env:PYTHONIOENCODING=\"utf-8\")"
+      "Bash($env:PYTHONIOENCODING=\"utf-8\")",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
