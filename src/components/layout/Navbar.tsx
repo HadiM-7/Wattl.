@@ -34,9 +34,12 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
+  // Only show active state for main pages, NOT for section anchors (like #how-it-works)
   const isActive = (href: string) => {
+    // Never show active for anchor links
+    if (href.startsWith("/#")) return false;
+    // Only show active for actual pages
     if (href === "/") return pathname === "/";
-    if (href.startsWith("/#")) return pathname === "/";
     return pathname.startsWith(href);
   };
 
@@ -74,17 +77,27 @@ export function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden items-center gap-8 lg:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="group relative text-sm font-semibold uppercase tracking-wide text-brand-blue transition-colors hover:text-brand-blue/80"
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-brand-yellow opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className="group relative text-sm font-semibold uppercase tracking-wide text-brand-blue transition-colors hover:text-brand-blue/80"
+                >
+                  {link.label}
+                  <span
+                    className={cn(
+                      "absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-brand-yellow transition-opacity duration-300",
+                      active
+                        ? "opacity-100"
+                        : "opacity-0 group-hover:opacity-100"
+                    )}
+                  />
+                </Link>
+              );
+            })}
             <Link href="/locations">
               <Button variant="dark" className="text-xs">
                 Find a Station

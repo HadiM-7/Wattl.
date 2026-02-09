@@ -18,11 +18,11 @@
 
 ### 🔴 CRITICAL - DO IMMEDIATELY
 1. **Web3Forms Email Setup**
-   - [ ] Add actual access key to `.env.local`
-   - [ ] Verify Vercel environment variables set
-   - [ ] Test form submission locally
-   - [ ] Test form submission on production
-   - [ ] Verify emails received
+   - [x] Add actual access key to `.env.local`
+   - [x] Verify Vercel environment variables set
+   - [x] Test form submission locally
+   - [x] Test form submission on production
+   - [x] Verify emails received
    - **Time**: 15-30 minutes
    - **Reference**: `.claude/WEB3FORMS_SETUP_GUIDE.md`
 
@@ -41,8 +41,8 @@
 ### 🟡 IMPORTANT - DO SOON
 4. **Cross-Device Testing**
    - [ ] Run Playwright tests on production
-   - [ ] Test on actual iOS device
-   - [ ] Test on actual Android device
+   - [x] Test on actual iOS device
+   - [x] Test on actual Android device
    - **Command**: `npm run test:e2e`
    - **Time**: 10-15 minutes
 

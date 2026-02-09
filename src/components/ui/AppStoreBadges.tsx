@@ -16,8 +16,8 @@ export function AppStoreBadges() {
       {/* Apple App Store Badge - Official Design */}
       <motion.a
         href="#"
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
+        whileHover={{ scale: 1.05, rotate: -1.5 }}
+        whileTap={{ scale: 0.95, rotate: -0.5 }}
         className="inline-block transition-shadow hover:shadow-xl"
         aria-label="Download on the App Store"
       >
@@ -69,9 +69,11 @@ export function AppStoreBadges() {
 
       {/* Google Play Badge - Official Design */}
       <motion.a
-        href="#"
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
+        href="https://play.google.com/store/apps/details?id=com.wattl.app.powerbank&hl=en_AU"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.05, rotate: 1.5 }}
+        whileTap={{ scale: 0.95, rotate: 0.5 }}
         className="inline-block transition-shadow hover:shadow-xl"
         aria-label="Get it on Google Play"
       >

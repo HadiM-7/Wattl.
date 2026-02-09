@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { ButtonHTMLAttributes, forwardRef } from "react";
+import { motion } from "framer-motion";
 
 type ButtonVariant = "primary" | "secondary" | "dark" | "ghost";
 
@@ -23,16 +24,21 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     { className, variant = "primary", isLoading, children, disabled, ...props },
     ref
   ) => {
+    const MotionButton = motion.button as any;
+
     return (
-      <button
+      <MotionButton
         ref={ref}
         disabled={disabled || isLoading}
+        whileHover={{ scale: 1.05, rotate: 1 }}
+        whileTap={{ scale: 0.95, rotate: -0.5 }}
         className={cn(
-          "inline-flex cursor-pointer items-center justify-center rounded-button px-6 py-3 text-sm font-semibold uppercase tracking-[0.05em] transition-all duration-200 hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50",
+          "inline-flex cursor-pointer items-center justify-center rounded-button px-6 py-3 text-sm font-semibold uppercase tracking-[0.05em] transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50",
           variantStyles[variant],
           className
         )}
-        {...props}
+        type="button"
+        {...(props as any)}
       >
         {isLoading ? (
           <svg
@@ -56,7 +62,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           </svg>
         ) : null}
         {children}
-      </button>
+      </MotionButton>
     );
   }
 );
