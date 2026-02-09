@@ -25,6 +25,17 @@ export function Hero() {
           🍃
         </div>
 
+        {/* Battery decoration with floating animation */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.25, y: [0, -10, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          className="pointer-events-none absolute bottom-12 right-8 text-6xl md:text-7xl"
+          aria-hidden="true"
+        >
+          🔋
+        </motion.div>
+
         <div className="mx-auto grid max-w-[1200px] gap-8 px-4 pt-12 pb-20 md:grid-cols-2 md:items-center md:px-6 md:pt-20 md:pb-28">
           {/* Text column */}
           <div className="relative z-10">

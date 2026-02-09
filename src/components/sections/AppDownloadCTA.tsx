@@ -35,22 +35,42 @@ export function AppDownloadCTA() {
             anytime.
           </p>
 
-          {/* App store badges placeholder */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
+          {/* App store badges */}
+          <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
+            <motion.a
               href="#"
-              className="inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-brand-black transition-transform hover:scale-[1.02] hover:rotate-[-1deg]"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-brand-black shadow-lg transition-shadow hover:shadow-xl"
               aria-label="Download on the App Store"
             >
-              App Store
-            </a>
-            <a
+              <svg
+                className="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M18.71 19.71a1 1 0 001.42-1.42L12.66 7.26a1 1 0 00-1.32 0l-7.47 11.03a1 1 0 001.42 1.42L12 9.41z" />
+              </svg>
+              <span className="ml-2">App Store</span>
+            </motion.a>
+            <motion.a
               href="#"
-              className="inline-block rounded-lg bg-white px-6 py-3 text-sm font-semibold text-brand-black transition-transform hover:scale-[1.02] hover:rotate-[1deg]"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-brand-black shadow-lg transition-shadow hover:shadow-xl"
               aria-label="Get it on Google Play"
             >
-              Google Play
-            </a>
+              <svg
+                className="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M3.5 19.5h17v-15h-17z" />
+              </svg>
+              <span className="ml-2">Google Play</span>
+            </motion.a>
           </div>
 
           {/* Leaf accent */}

@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:wattl.framer.website)"
+      "WebFetch(domain:wattl.framer.website)",
+      "Bash(npm run build:*)",
+      "Bash(python verify_design.py:*)",
+      "Bash(playwright install:*)",
+      "Bash($env:PYTHONIOENCODING=\"utf-8\")"
     ]
   }
 }

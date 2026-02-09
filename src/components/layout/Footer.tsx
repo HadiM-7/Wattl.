@@ -21,10 +21,22 @@ const paymentIcons = ["Visa", "MC", "Amex", "GPay", "APay", "PayPal"];
 
 export function Footer() {
   return (
-    <footer className="bg-brand-black text-white">
-      <div className="mx-auto max-w-[1200px] px-4 py-12 md:px-6 md:py-16">
+    <footer className="relative bg-brand-black text-white overflow-hidden">
+      {/* Branded watermark background */}
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 text-[200px] font-heading font-bold text-brand-yellow opacity-5 leading-none"
+        style={{
+          transform: "rotate(-15deg) translateY(20px) translateX(20px)",
+          zIndex: 0,
+        }}
+        aria-hidden="true"
+      >
+        Wattl.
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-[1200px] px-4 py-12 md:px-6 md:py-16">
         {/* Link columns */}
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
+        <div className="relative grid grid-cols-2 gap-8 md:grid-cols-3">
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
               <h3 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wide text-gray-400">
@@ -47,10 +59,10 @@ export function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="my-10 h-px bg-gray-800" />
+        <div className="relative my-10 h-px bg-gray-800" />
 
         {/* Bottom section */}
-        <div className="flex flex-col items-center gap-6">
+        <div className="relative flex flex-col items-center gap-6">
           <Image
             src="/images/wattl-light.png"
             alt="Wattl."

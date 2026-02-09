@@ -79,13 +79,10 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={cn(
-                  "relative text-sm font-semibold uppercase tracking-wide text-brand-blue transition-colors hover:text-brand-blue/80",
-                  isActive(link.href) &&
-                    "after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-full after:rounded-full after:bg-brand-yellow"
-                )}
+                className="group relative text-sm font-semibold uppercase tracking-wide text-brand-blue transition-colors hover:text-brand-blue/80"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-brand-yellow opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </Link>
             ))}
             <Link href="/locations">

@@ -120,7 +120,18 @@ export function Testimonials() {
             </div>
 
             {/* Right column — testimonial cards */}
-            <div className="flex flex-col gap-4">
+            <div className="relative flex flex-col gap-4">
+              {/* Subtle heart accent behind cards */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 0.15, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="pointer-events-none absolute -top-8 -left-4 text-7xl md:text-8xl"
+                aria-hidden="true"
+              >
+                💚
+              </motion.div>
               {testimonials.map((t, i) => (
                 <motion.div
                   key={i}
@@ -128,7 +139,7 @@ export function Testimonials() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="rounded-card bg-brand-yellow p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  className="relative rounded-card bg-brand-yellow p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                   style={{ transform: `rotate(${t.rotate})` }}
                 >
                   <div className="mb-3 flex gap-1">
