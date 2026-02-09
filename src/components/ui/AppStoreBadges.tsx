@@ -21,10 +21,10 @@ export function AppStoreBadges() {
         title="Download Wattl on the App Store (Coming Soon)"
       >
         <img
-          src="/badges-app-store.svg"
+          src="/badges-app-store.png"
           alt="Download on the App Store"
-          width="120"
-          height="40"
+          width="140"
+          height="42"
         />
       </a>
 
