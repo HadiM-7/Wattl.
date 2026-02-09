@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Colors - Brand */
+  --color-brand-yellow: #FFC600;
+  --color-brand-blue: #003CA7;
+  --color-brand-pale-yellow: #FCE79E;
+  --color-brand-off-white: #FFFFF3;
+  --color-brand-black: #000000;
+  --color-brand-teal: #38AAD4;
+  --color-brand-green: #208334;
+  --color-brand-dark-teal: #002C34;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Semantic colors */
+  --color-error: #D32F2F;
+  --color-input-border: #CCCCCC;
+
+  /* Font families */
+  --font-heading: var(--font-poppins);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Border radius */
+  --radius-button: 8px;
+  --radius-card: 12px;
+  --radius-input: 12px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-brand-off-white);
+  color: var(--color-brand-black);
+  font-family: var(--font-body), "Segoe UI", Arial, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus indicators */
+*:focus-visible {
+  outline: 3px solid var(--color-brand-teal);
+  outline-offset: 3px;
 }
