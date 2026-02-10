@@ -1,18 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { AppStoreBadges } from "@/components/ui/AppStoreBadges";
 
 export function AppDownloadCTA() {
   return (
     <section className="bg-brand-black py-16 md:py-24">
       <div className="relative mx-auto max-w-[1200px] px-4 text-center md:px-6">
-        {/* Floating decorations */}
-        <div className="pointer-events-none absolute top-4 left-8 text-4xl opacity-20">
-          ⚡
+        {/* Kookaburra decoration (top-left) */}
+        <div className="pointer-events-none absolute top-4 left-8 opacity-35" aria-hidden="true">
+          <Image
+            src="/images/decorations/kookaburra.png"
+            alt=""
+            width={72}
+            height={72}
+            className="h-[4.2rem] w-[4.2rem] object-contain"
+          />
         </div>
-        <div className="pointer-events-none absolute right-8 bottom-4 text-4xl opacity-20">
-          ⚡
+
+        {/* Cockatoo decoration (bottom area) */}
+        <div className="pointer-events-none absolute right-8 bottom-4 opacity-30" aria-hidden="true">
+          <Image
+            src="/images/decorations/cockatoo.png"
+            alt=""
+            width={60}
+            height={60}
+            className="h-14 w-14 object-contain"
+          />
         </div>
 
         <motion.div
@@ -38,11 +53,6 @@ export function AppDownloadCTA() {
 
           {/* Official app store badges */}
           <AppStoreBadges />
-
-          {/* Leaf accent */}
-          <div className="pointer-events-none mt-8 text-3xl opacity-15">
-            🍃
-          </div>
         </motion.div>
       </div>
     </section>

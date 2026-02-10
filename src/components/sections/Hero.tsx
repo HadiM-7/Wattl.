@@ -20,21 +20,27 @@ export function Hero() {
           }}
         />
 
-        {/* Leaf decoration */}
-        <div className="pointer-events-none absolute top-8 left-8 text-5xl opacity-30 md:text-7xl">
-          🍃
+        {/* Cockatoo decoration (top-left) */}
+        <div className="pointer-events-none absolute top-8 left-8 opacity-40" aria-hidden="true">
+          <Image
+            src="/images/decorations/cockatoo.png"
+            alt=""
+            width={96}
+            height={96}
+            className="h-20 w-20 object-contain md:h-24 md:w-24"
+          />
         </div>
 
-        {/* Battery decoration with floating animation */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.25, y: [0, -10, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="pointer-events-none absolute bottom-12 right-8 text-6xl md:text-7xl"
-          aria-hidden="true"
-        >
-          🔋
-        </motion.div>
+        {/* Koala decoration (bottom-right) */}
+        <div className="pointer-events-none absolute bottom-12 right-8 opacity-35" aria-hidden="true">
+          <Image
+            src="/images/decorations/koala.png"
+            alt=""
+            width={120}
+            height={120}
+            className="h-24 w-24 object-contain md:h-[7.2rem] md:w-[7.2rem]"
+          />
+        </div>
 
         <div className="mx-auto grid max-w-[1200px] gap-8 px-4 pt-12 pb-20 md:grid-cols-2 md:items-center md:px-6 md:pt-20 md:pb-28">
           {/* Text column */}
@@ -43,7 +49,7 @@ export function Hero() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-4 font-heading text-sm font-semibold uppercase tracking-widest text-brand-blue/70"
+              className="mb-4 font-subheading text-sm tracking-widest text-brand-blue/70"
             >
               —— Portable Power Bank Rentals
             </motion.p>
@@ -94,10 +100,6 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative flex justify-center md:justify-end"
           >
-            {/* Plant decoration at base */}
-            <div className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2 text-4xl opacity-40 md:text-5xl">
-              🌿
-            </div>
             <div className="relative z-10 md:translate-y-10">
               <Image
                 src="/images/station.png"

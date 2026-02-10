@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const tabs = ["Terms of Service", "Refund Policy"] as const;
@@ -10,7 +11,17 @@ export default function LegalPage() {
   const [activeTab, setActiveTab] = useState<Tab>("Terms of Service");
 
   return (
-    <section className="bg-brand-off-white py-16 md:py-24">
+    <section className="relative bg-brand-off-white py-16 md:py-24">
+      {/* Toucan decoration */}
+      <div className="pointer-events-none absolute top-8 right-8 opacity-30" aria-hidden="true">
+        <Image
+          src="/images/decorations/toucan.png"
+          alt=""
+          width={72}
+          height={72}
+          className="h-[4.2rem] w-[4.2rem] object-contain"
+        />
+      </div>
       <div className="mx-auto max-w-[1200px] px-4 md:px-6">
         <h1 className="mb-2 font-heading text-3xl font-bold text-brand-blue md:text-[48px]">
           Terms and Conditions

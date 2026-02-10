@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Accordion } from "@/components/ui/Accordion";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -58,9 +59,15 @@ export default function ContactUsPage() {
                 Answers about pricing, lost power banks, and charging speeds.
                 We&apos;re here to keep you powered up.
               </p>
-              {/* Lightning bolt decoration */}
-              <div className="pointer-events-none mt-8 text-5xl opacity-25">
-                ⚡
+              {/* Toucan decoration */}
+              <div className="pointer-events-none mt-8 opacity-40" aria-hidden="true">
+                <Image
+                  src="/images/decorations/toucan.png"
+                  alt=""
+                  width={72}
+                  height={72}
+                  className="h-[4.2rem] w-[4.2rem] object-contain"
+                />
               </div>
             </div>
 
@@ -93,9 +100,15 @@ export default function ContactUsPage() {
               >
                 0423 234 799
               </a>
-              {/* Phone decoration */}
-              <div className="pointer-events-none mt-8 text-4xl opacity-20">
-                📞
+              {/* Parrot decoration */}
+              <div className="pointer-events-none mt-8 opacity-35" aria-hidden="true">
+                <Image
+                  src="/images/decorations/parrot.png"
+                  alt=""
+                  width={60}
+                  height={60}
+                  className="h-14 w-14 object-contain"
+                />
               </div>
             </div>
 

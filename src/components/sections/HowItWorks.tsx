@@ -76,7 +76,7 @@ export function HowItWorks() {
                 <p className="mb-2 font-mono text-sm text-brand-yellow/60">
                   {step.number}
                 </p>
-                <h3 className="mb-3 font-heading text-xl font-bold text-white">
+                <h3 className="mb-3 font-subheading text-xl text-white">
                   {step.title}
                 </h3>
                 <p className="text-sm leading-relaxed text-gray-400">

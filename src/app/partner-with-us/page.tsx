@@ -9,6 +9,7 @@ import {
   Infinity,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Card } from "@/components/ui/Card";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 import { StationRequestForm } from "@/components/forms/StationRequestForm";
@@ -60,7 +61,17 @@ export default function PartnerWithUsPage() {
   return (
     <>
       {/* Benefits Hero */}
-      <section className="bg-brand-yellow py-16 md:py-24">
+      <section className="relative bg-brand-yellow py-16 md:py-24">
+        {/* Koala decoration */}
+        <div className="pointer-events-none absolute top-8 right-8 opacity-35" aria-hidden="true">
+          <Image
+            src="/images/decorations/koala.png"
+            alt=""
+            width={72}
+            height={72}
+            className="h-[4.2rem] w-[4.2rem] object-contain"
+          />
+        </div>
         <div className="mx-auto max-w-[1200px] px-4 md:px-6">
           <div className="mb-12 text-center">
             <h1 className="mb-2 font-heading text-3xl font-bold text-brand-blue md:text-[48px]">
@@ -94,7 +105,17 @@ export default function PartnerWithUsPage() {
       <WaveDivider topColor="#FFC600" bottomColor="#FCE79E" />
 
       {/* Station Request Form */}
-      <section className="bg-brand-pale-yellow py-16 md:py-24">
+      <section className="relative bg-brand-pale-yellow py-16 md:py-24">
+        {/* Cockatoo decoration */}
+        <div className="pointer-events-none absolute bottom-8 left-8 opacity-30" aria-hidden="true">
+          <Image
+            src="/images/decorations/cockatoo.png"
+            alt=""
+            width={72}
+            height={72}
+            className="h-[4.2rem] w-[4.2rem] object-contain"
+          />
+        </div>
         <div className="mx-auto max-w-lg px-4 text-center md:px-6">
           <h2 className="mb-2 font-heading text-2xl font-bold text-brand-blue md:text-[36px]">
             Request a station

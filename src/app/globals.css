@@ -16,7 +16,8 @@
   --color-input-border: #CCCCCC;
 
   /* Font families */
-  --font-heading: var(--font-poppins);
+  --font-heading: var(--font-georama);
+  --font-subheading: var(--font-londrina-solid);
   --font-body: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 
@@ -47,6 +48,11 @@ html {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Subheading font always uppercase */
+.font-subheading {
+  text-transform: uppercase;
 }
 
 /* Focus indicators */

@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { Poppins, Inter, JetBrains_Mono } from "next/font/google";
+import { Georama, Londrina_Solid, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const georama = Georama({
+  variable: "--font-georama",
   subsets: ["latin"],
   weight: ["600", "700"],
+  display: "swap",
+});
+
+const londrinaSolid = Londrina_Solid({
+  variable: "--font-londrina-solid",
+  subsets: ["latin"],
+  weight: ["400"],
   display: "swap",
 });
 
@@ -79,7 +86,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${poppins.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${georama.variable} ${londrinaSolid.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <Navbar />
         <main className="pt-[72px]">{children}</main>

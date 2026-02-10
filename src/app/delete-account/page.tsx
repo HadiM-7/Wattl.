@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { DeleteAccountForm } from "@/components/forms/DeleteAccountForm";
 
 export const metadata: Metadata = {
@@ -22,6 +23,16 @@ export default function DeleteAccountPage() {
               associated data, fill out the form and we&apos;ll process your
               request.
             </p>
+            {/* Parrot decoration */}
+            <div className="pointer-events-none mt-8 opacity-30" aria-hidden="true">
+              <Image
+                src="/images/decorations/parrot.png"
+                alt=""
+                width={60}
+                height={60}
+                className="h-14 w-14 object-contain"
+              />
+            </div>
           </div>
 
           {/* Right form */}

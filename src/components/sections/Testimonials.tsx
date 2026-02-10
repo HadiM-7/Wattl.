@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Star } from "lucide-react";
+import Image from "next/image";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 
 const testimonials = [
@@ -78,9 +79,15 @@ export function Testimonials() {
     <>
       <section className="bg-brand-off-white py-16 md:py-24">
         <div className="mx-auto max-w-[1200px] px-4 md:px-6">
-          {/* Leaf accent */}
-          <div className="pointer-events-none mb-4 text-3xl opacity-30">
-            🍃
+          {/* Parrot accent */}
+          <div className="pointer-events-none mb-4 opacity-40" aria-hidden="true">
+            <Image
+              src="/images/decorations/parrot.png"
+              alt=""
+              width={60}
+              height={60}
+              className="h-14 w-14 object-contain"
+            />
           </div>
 
           <div className="grid gap-12 md:grid-cols-2 md:items-start">
@@ -113,24 +120,36 @@ export function Testimonials() {
                 ))}
               </div>
 
-              {/* Bird decoration */}
-              <div className="pointer-events-none mt-8 text-3xl opacity-20">
-                🐦
+              {/* Kookaburra decoration */}
+              <div className="pointer-events-none mt-8 opacity-35" aria-hidden="true">
+                <Image
+                  src="/images/decorations/kookaburra.png"
+                  alt=""
+                  width={72}
+                  height={72}
+                  className="h-[4.2rem] w-[4.2rem] object-contain"
+                />
               </div>
             </div>
 
             {/* Right column — testimonial cards */}
             <div className="relative flex flex-col gap-4">
-              {/* Subtle heart accent behind cards */}
+              {/* Kangaroo accent behind cards */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 0.15, scale: 1 }}
+                whileInView={{ opacity: 0.3, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="pointer-events-none absolute -top-8 -left-4 text-7xl md:text-8xl"
+                className="pointer-events-none absolute -top-8 -left-4"
                 aria-hidden="true"
               >
-                💚
+                <Image
+                  src="/images/decorations/kangaroo.png"
+                  alt=""
+                  width={120}
+                  height={120}
+                  className="h-[7.2rem] w-[7.2rem] object-contain"
+                />
               </motion.div>
               {testimonials.map((t, i) => (
                 <motion.div

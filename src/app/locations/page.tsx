@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 import { SuggestLocationForm } from "@/components/forms/SuggestLocationForm";
@@ -50,9 +51,15 @@ export default function LocationsPage() {
                 From cafes to festivals, suggest a hotspot and we&apos;ll power
                 up.
               </p>
-              {/* Station illustration placeholder */}
-              <div className="pointer-events-none mt-8 text-5xl opacity-30">
-                🔌
+              {/* Kangaroo decoration */}
+              <div className="pointer-events-none mt-8 opacity-45" aria-hidden="true">
+                <Image
+                  src="/images/decorations/kangaroo.png"
+                  alt=""
+                  width={72}
+                  height={72}
+                  className="h-[4.2rem] w-[4.2rem] object-contain"
+                />
               </div>
             </div>
 
