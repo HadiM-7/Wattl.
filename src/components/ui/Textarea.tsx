@@ -5,10 +5,11 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   error?: string;
   dark?: boolean;
+  showRequired?: boolean;
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ label, error, dark, className, id, ...props }, ref) => {
+  ({ label, error, dark, showRequired, className, id, ...props }, ref) => {
     const inputId = id || label.toLowerCase().replace(/\s+/g, "-");
 
     return (
@@ -21,10 +22,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           )}
         >
           {label}
+          {showRequired && <span className="ml-0.5 text-error">*</span>}
         </label>
         <textarea
           ref={ref}
           id={inputId}
+          aria-required={showRequired || undefined}
           aria-describedby={error ? `${inputId}-error` : undefined}
           rows={4}
           className={cn(

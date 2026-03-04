@@ -45,6 +45,7 @@ export function SuggestLocationForm() {
       <Input
         label="ESTABLISHMENT / OCCASION"
         placeholder="e.g. The Corner Cafe"
+        showRequired
         error={errors.establishment?.message}
         {...register("establishment", {
           required: "This field is required",
@@ -53,6 +54,7 @@ export function SuggestLocationForm() {
       <Input
         label="ADDRESS"
         placeholder="e.g. 123 Beach Road, Bondi"
+        showRequired
         error={errors.address?.message}
         {...register("address", { required: "Address is required" })}
       />
@@ -60,6 +62,7 @@ export function SuggestLocationForm() {
         label="EMAIL"
         type="email"
         placeholder="e.g. email@gmail.com"
+        showRequired
         error={errors.email?.message}
         {...register("email", {
           required: "Email is required",

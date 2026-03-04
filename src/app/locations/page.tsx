@@ -46,7 +46,17 @@ export default function LocationsPage() {
       <SquigglyDivider color="#1A1A1A" bg="#FCE79E" />
 
       {/* Suggest a Location */}
-      <section className="bg-brand-pale-yellow py-20 md:py-32">
+      <section className="relative bg-brand-pale-yellow py-20 md:py-32">
+        {/* Waratah decoration */}
+        <div className="pointer-events-none absolute right-4 bottom-8 md:right-12" aria-hidden="true">
+          <Image
+            src="/images/decorations/waratah.png"
+            alt=""
+            width={120}
+            height={120}
+            className="h-24 w-24 object-contain md:h-36 md:w-36"
+          />
+        </div>
         <div className="mx-auto max-w-[1200px] px-4 md:px-6">
           <div className="grid gap-12 md:grid-cols-2 md:items-start">
             {/* Left text */}

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { CheckCircle, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
@@ -10,9 +11,17 @@ interface FormStatusProps {
 }
 
 export function FormStatus({ status, message, onRetry }: FormStatusProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    containerRef.current?.focus();
+  }, []);
+
   return (
     <div
-      className="flex flex-col items-center gap-4 py-12 text-center"
+      ref={containerRef}
+      tabIndex={-1}
+      className="flex flex-col items-center gap-4 py-12 text-center outline-none"
       role="status"
       aria-live="polite"
     >

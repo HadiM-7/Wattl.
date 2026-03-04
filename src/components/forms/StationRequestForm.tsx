@@ -47,12 +47,14 @@ export function StationRequestForm() {
       <Input
         label="VENUE NAME"
         placeholder="e.g. The Corner Cafe"
+        showRequired
         error={errors.venueName?.message}
         {...register("venueName", { required: "Venue name is required" })}
       />
       <Input
         label="CONTACT PERSON"
         placeholder="e.g. John Smith"
+        showRequired
         error={errors.contactPerson?.message}
         {...register("contactPerson", {
           required: "Contact person is required",
@@ -62,6 +64,7 @@ export function StationRequestForm() {
         label="EMAIL ADDRESS"
         type="email"
         placeholder="e.g. hello@yourcafe.com.au"
+        showRequired
         error={errors.email?.message}
         {...register("email", {
           required: "Email is required",
@@ -75,6 +78,7 @@ export function StationRequestForm() {
         label="PHONE NUMBER"
         type="tel"
         placeholder="e.g. 0412 345 678"
+        showRequired
         error={errors.phone?.message}
         {...register("phone", {
           required: "Phone number is required",

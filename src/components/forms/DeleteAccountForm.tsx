@@ -52,6 +52,7 @@ export function DeleteAccountForm() {
       <Input
         label="FULL NAME"
         placeholder="e.g. John Doe"
+        showRequired
         error={errors.name?.message}
         {...register("name", { required: "Name is required" })}
       />
@@ -59,6 +60,7 @@ export function DeleteAccountForm() {
         label="EMAIL ADDRESS"
         type="email"
         placeholder="e.g. email@gmail.com"
+        showRequired
         error={errors.email?.message}
         {...register("email", {
           required: "Email is required",

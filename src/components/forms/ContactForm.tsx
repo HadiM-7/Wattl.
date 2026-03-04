@@ -46,6 +46,7 @@ export function ContactForm() {
       <Input
         label="FULL NAME"
         placeholder="e.g. John Doe"
+        showRequired
         error={errors.name?.message}
         {...register("name", { required: "Name is required" })}
       />
@@ -53,6 +54,7 @@ export function ContactForm() {
         label="EMAIL ADDRESS"
         type="email"
         placeholder="e.g. email@gmail.com"
+        showRequired
         error={errors.email?.message}
         {...register("email", {
           required: "Email is required",
@@ -65,6 +67,7 @@ export function ContactForm() {
       <Textarea
         label="MESSAGE"
         placeholder="Tell us what's on your mind..."
+        showRequired
         error={errors.message?.message}
         {...register("message", { required: "Message is required" })}
       />

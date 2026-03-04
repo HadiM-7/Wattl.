@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 
 const navLinks = [
@@ -147,25 +148,45 @@ export function Navbar() {
       </div>
 
       {/* Mobile overlay */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-brand-blue/95 backdrop-blur-sm">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className="text-2xl font-semibold uppercase tracking-wide text-white transition-colors hover:text-brand-yellow"
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-brand-blue/95 backdrop-blur-sm"
+          >
+            {navLinks.map((link, i) => (
+              <motion.div
+                key={link.href}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
+              >
+                <Link
+                  href={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className="text-2xl font-semibold uppercase tracking-wide text-white transition-colors hover:text-brand-yellow"
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
+            ))}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.3 }}
             >
-              {link.label}
-            </Link>
-          ))}
-          <Link href="/partner-with-us" onClick={() => setMobileOpen(false)}>
-            <Button variant="primary" className="mt-4 text-base">
-              Partner With Us
-            </Button>
-          </Link>
-        </div>
-      )}
+              <Link href="/partner-with-us" onClick={() => setMobileOpen(false)}>
+                <Button variant="primary" className="mt-4 text-base">
+                  Partner With Us
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

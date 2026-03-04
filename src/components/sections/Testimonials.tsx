@@ -4,7 +4,6 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import { SquigglyDivider } from "@/components/ui/SquigglyDivider";
 
 const testimonials = [
   {
@@ -188,9 +187,6 @@ export function Testimonials() {
           </div>
         </div>
       </section>
-      <div className="-mt-16 relative z-10">
-        <SquigglyDivider color="#38AAD4" bg="#38AAD4" />
-      </div>
     </>
   );
 }

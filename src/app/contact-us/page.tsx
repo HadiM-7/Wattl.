@@ -80,7 +80,17 @@ export default function ContactUsPage() {
       <SquigglyDivider color="#1A1A1A" bg="#003CA7" />
 
       {/* Contact Form Section */}
-      <section className="bg-brand-blue py-16 md:py-24">
+      <section className="relative bg-brand-blue py-16 md:py-24">
+        {/* Waratah decoration */}
+        <div className="pointer-events-none absolute top-8 right-4 md:right-12" aria-hidden="true">
+          <Image
+            src="/images/decorations/waratah.png"
+            alt=""
+            width={120}
+            height={120}
+            className="h-20 w-20 object-contain md:h-32 md:w-32"
+          />
+        </div>
         <div className="mx-auto max-w-[1200px] px-4 md:px-6">
           <div className="grid gap-10 md:grid-cols-2 md:items-start">
             {/* Left text */}

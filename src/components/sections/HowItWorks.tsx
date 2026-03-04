@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { SquigglyDivider } from "@/components/ui/SquigglyDivider";
 
 const steps = [
@@ -54,6 +55,16 @@ export function HowItWorks() {
   return (
     <>
       <section id="how-it-works" className="relative z-10 bg-brand-blue py-16 pb-24 md:py-24 md:pb-32">
+        {/* Waratah decoration */}
+        <div className="pointer-events-none absolute top-8 right-4 md:right-12" aria-hidden="true">
+          <Image
+            src="/images/decorations/waratah.png"
+            alt=""
+            width={120}
+            height={120}
+            className="h-20 w-20 object-contain md:h-32 md:w-32"
+          />
+        </div>
         <div className="mx-auto max-w-[700px] px-4 md:px-6">
           <div className="mb-12 text-center">
             <h2
