@@ -46,6 +46,8 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
+  const isDarkBg = ["/delete-account"].includes(pathname);
+
   const isActive = (href: string) => {
     if (href === "/#how-it-works") return howItWorksActive;
     if (href === "/") return pathname === "/" && !howItWorksActive;
@@ -85,7 +87,7 @@ export function Navbar() {
           )}>
             <Link href="/" aria-label="Wattl Home">
               <Image
-                src="/images/wattl-dark.png"
+                src={!scrolled && isDarkBg ? "/images/wattl-light.png" : "/images/wattl-dark.png"}
                 alt="Wattl."
                 width={130}
                 height={44}
@@ -111,10 +113,14 @@ export function Navbar() {
                       active
                         ? pathname === "/"
                           ? "border-2 border-brand-yellow bg-brand-yellow text-brand-black"
-                          : "border-2 border-brand-blue bg-brand-blue text-brand-yellow"
+                          : isDarkBg
+                            ? "border-2 border-brand-yellow bg-brand-yellow text-brand-black"
+                            : "border-2 border-brand-blue bg-brand-blue text-brand-yellow"
                         : scrolled
                           ? "border-2 border-transparent text-brand-black/70 hover:bg-brand-black/5 hover:text-brand-black"
-                          : "border-2 border-transparent text-brand-blue hover:text-brand-black"
+                          : isDarkBg
+                            ? "border-2 border-transparent text-white/90 hover:text-white"
+                            : "border-2 border-transparent text-brand-blue hover:text-brand-black"
                     )}
                   >
                     {link.label}
@@ -122,7 +128,7 @@ export function Navbar() {
                 );
               })}
               <Link href="/partner-with-us">
-                <Button variant={pathname === "/" ? "primary" : "dark"} className="ml-1 text-xs">
+                <Button variant={pathname === "/" || isDarkBg ? "primary" : "dark"} className="ml-1 text-xs">
                   Partner With Us
                 </Button>
               </Link>
@@ -140,7 +146,7 @@ export function Navbar() {
                 <Menu
                   className={cn(
                     "h-6 w-6 transition-colors duration-300",
-                    scrolled ? "text-brand-black" : "text-brand-blue"
+                    scrolled ? "text-brand-black" : isDarkBg ? "text-white" : "text-brand-blue"
                   )}
                 />
               )}

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function DeleteAccountPage() {
   return (
-    <section className="bg-brand-blue pt-[calc(72px+4rem)] pb-16 md:pt-[calc(72px+6rem)] md:pb-24">
+    <section className="flex min-h-screen items-center bg-brand-blue py-24 md:py-32">
       <div className="mx-auto max-w-[1200px] px-4 md:px-6">
         <div className="grid gap-10 md:grid-cols-2 md:items-start">
           {/* Left text */}
