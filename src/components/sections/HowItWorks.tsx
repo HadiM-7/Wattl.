@@ -56,13 +56,13 @@ export function HowItWorks() {
     <>
       <section id="how-it-works" className="relative z-10 bg-brand-blue py-16 pb-24 md:py-24 md:pb-32">
         {/* Waratah decoration */}
-        <div className="pointer-events-none absolute top-8 right-4 md:right-12" aria-hidden="true">
+        <div className="pointer-events-none absolute top-12 right-8 md:right-20" aria-hidden="true">
           <Image
             src="/images/decorations/waratah.png"
             alt=""
-            width={120}
-            height={120}
-            className="h-20 w-20 object-contain md:h-32 md:w-32"
+            width={200}
+            height={200}
+            className="h-28 w-28 object-contain md:h-44 md:w-44"
           />
         </div>
         <div className="mx-auto max-w-[700px] px-4 md:px-6">
