@@ -109,7 +109,9 @@ export function Navbar() {
                     className={cn(
                       "rounded-full px-4 py-1.5 text-sm font-[800] transition-all duration-300",
                       active
-                        ? "border-2 border-brand-black bg-brand-yellow text-brand-black"
+                        ? pathname === "/"
+                          ? "border-2 border-brand-yellow bg-brand-yellow text-brand-black"
+                          : "border-2 border-brand-blue bg-brand-blue text-brand-yellow"
                         : scrolled
                           ? "border-2 border-transparent text-brand-black/70 hover:bg-brand-black/5 hover:text-brand-black"
                           : "border-2 border-transparent text-brand-blue hover:text-brand-black"
@@ -120,7 +122,7 @@ export function Navbar() {
                 );
               })}
               <Link href="/partner-with-us">
-                <Button variant="primary" className="ml-1 text-xs">
+                <Button variant={pathname === "/" ? "primary" : "dark"} className="ml-1 text-xs">
                   Partner With Us
                 </Button>
               </Link>
