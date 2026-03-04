@@ -13,13 +13,13 @@ export default function LegalPage() {
   return (
     <section className="relative bg-brand-off-white py-16 md:py-24">
       {/* Toucan decoration */}
-      <div className="pointer-events-none absolute top-8 right-8 opacity-30" aria-hidden="true">
+      <div className="pointer-events-none absolute top-8 right-8" aria-hidden="true">
         <Image
           src="/images/decorations/toucan.png"
           alt=""
           width={72}
           height={72}
-          className="h-[4.2rem] w-[4.2rem] object-contain"
+          className="h-24 w-24 object-contain md:h-32 md:w-32"
         />
       </div>
       <div className="mx-auto max-w-[1200px] px-4 md:px-6">
@@ -37,7 +37,7 @@ export default function LegalPage() {
               className={cn(
                 "cursor-pointer border-b-2 px-6 py-3 text-sm font-semibold transition-colors",
                 activeTab === tab
-                  ? "border-brand-yellow text-brand-blue"
+                  ? "border-brand-yellow text-brand-blue bg-brand-yellow/10 rounded-t-button"
                   : "border-transparent text-gray-400 hover:text-gray-600"
               )}
             >
@@ -135,7 +135,7 @@ function TermsOfService() {
 
         <section id="section-1" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 1 — Online Store Terms
+            Section 1: Online Store Terms
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             By agreeing to these Terms of Service, you represent that you are at
@@ -150,7 +150,7 @@ function TermsOfService() {
 
         <section id="section-2" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 2 — General Conditions
+            Section 2: General Conditions
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             We reserve the right to refuse service to anyone for any reason at
@@ -165,7 +165,7 @@ function TermsOfService() {
 
         <section id="section-3" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 3 — Accuracy, Completeness and Timeliness of Information
+            Section 3: Accuracy, Completeness and Timeliness of Information
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             We are not responsible if information made available on this site is
@@ -179,7 +179,7 @@ function TermsOfService() {
 
         <section id="section-4" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 4 — Modifications to the Service and Prices
+            Section 4: Modifications to the Service and Prices
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             Prices for our products and rentals are subject to change without
@@ -192,7 +192,7 @@ function TermsOfService() {
 
         <section id="section-5" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 5 — Products or Services
+            Section 5: Products or Services
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             Certain products or services may be available exclusively online
@@ -205,7 +205,7 @@ function TermsOfService() {
 
         <section id="section-6" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 6 — Accuracy of Billing and Account Information
+            Section 6: Accuracy of Billing and Account Information
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             We reserve the right to refuse any order or rental you place with
@@ -218,7 +218,7 @@ function TermsOfService() {
 
         <section id="section-7" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 7 — Optional Tools
+            Section 7: Optional Tools
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             We may provide you with access to third-party tools over which we
@@ -231,7 +231,7 @@ function TermsOfService() {
 
         <section id="section-8" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 8 — Third-Party Links
+            Section 8: Third-Party Links
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             Certain content, products and services available via our Service may
@@ -244,7 +244,7 @@ function TermsOfService() {
 
         <section id="section-9" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 9 — User Comments, Feedback and Other Submissions
+            Section 9: User Comments, Feedback and Other Submissions
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             If you send us creative ideas, suggestions, proposals, or other
@@ -257,7 +257,7 @@ function TermsOfService() {
 
         <section id="section-10" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 10 — Personal Information
+            Section 10: Personal Information
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             Your submission of personal information through the store is
@@ -267,7 +267,7 @@ function TermsOfService() {
 
         <section id="section-11" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 11 — Errors, Inaccuracies and Omissions
+            Section 11: Errors, Inaccuracies and Omissions
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             Occasionally there may be information on our site that contains
@@ -279,7 +279,7 @@ function TermsOfService() {
 
         <section id="section-12" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 12 — Prohibited Uses
+            Section 12: Prohibited Uses
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             You are prohibited from using the site or its content for any
@@ -293,7 +293,7 @@ function TermsOfService() {
 
         <section id="section-13" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 13 — Disclaimer of Warranties; Limitation of Liability
+            Section 13: Disclaimer of Warranties; Limitation of Liability
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             We do not guarantee that your use of our service will be
@@ -308,7 +308,7 @@ function TermsOfService() {
 
         <section id="section-14" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 14 — Indemnification
+            Section 14: Indemnification
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             You agree to indemnify, defend and hold harmless Wattl Charging PTY
@@ -321,7 +321,7 @@ function TermsOfService() {
 
         <section id="section-15" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 15 — Severability
+            Section 15: Severability
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             In the event that any provision of these Terms of Service is
@@ -333,7 +333,7 @@ function TermsOfService() {
 
         <section id="section-16" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 16 — Termination
+            Section 16: Termination
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             These Terms of Service are effective unless and until terminated by
@@ -344,7 +344,7 @@ function TermsOfService() {
 
         <section id="section-17" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 17 — Entire Agreement
+            Section 17: Entire Agreement
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             These Terms of Service and any policies posted by us on this site
@@ -355,7 +355,7 @@ function TermsOfService() {
 
         <section id="section-18" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 18 — Governing Law
+            Section 18: Governing Law
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             These Terms of Service shall be governed by and construed in
@@ -365,7 +365,7 @@ function TermsOfService() {
 
         <section id="section-19" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 19 — Changes to Terms of Service
+            Section 19: Changes to Terms of Service
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             We reserve the right to update, change or replace any part of these
@@ -377,7 +377,7 @@ function TermsOfService() {
 
         <section id="section-20" className="mb-8">
           <h2 className="mb-4 font-heading text-lg font-bold uppercase text-brand-blue">
-            Section 20 — Contact Information
+            Section 20: Contact Information
           </h2>
           <p className="text-sm leading-relaxed text-gray-700">
             Questions about the Terms of Service should be sent to us at{" "}

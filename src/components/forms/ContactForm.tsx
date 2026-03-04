@@ -46,7 +46,6 @@ export function ContactForm() {
       <Input
         label="FULL NAME"
         placeholder="e.g. John Doe"
-        dark
         error={errors.name?.message}
         {...register("name", { required: "Name is required" })}
       />
@@ -54,7 +53,6 @@ export function ContactForm() {
         label="EMAIL ADDRESS"
         type="email"
         placeholder="e.g. email@gmail.com"
-        dark
         error={errors.email?.message}
         {...register("email", {
           required: "Email is required",
@@ -66,12 +64,11 @@ export function ContactForm() {
       />
       <Textarea
         label="MESSAGE"
-        placeholder="Describe your issue in detail"
-        dark
+        placeholder="Tell us what's on your mind..."
         error={errors.message?.message}
         {...register("message", { required: "Message is required" })}
       />
-      <Button variant="ghost" type="submit" isLoading={isSubmitting}>
+      <Button variant="dark" type="submit" isLoading={isSubmitting}>
         Send Message
       </Button>
     </form>

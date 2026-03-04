@@ -1,27 +1,20 @@
 import type { Metadata } from "next";
-import { Georama, Londrina_Solid, Inter, JetBrains_Mono } from "next/font/google";
+import { Lilita_One, Nunito, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
-const georama = Georama({
-  variable: "--font-georama",
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  display: "swap",
-});
-
-const londrinaSolid = Londrina_Solid({
-  variable: "--font-londrina-solid",
+const lilitaOne = Lilita_One({
+  variable: "--font-lilita-one",
   subsets: ["latin"],
   weight: ["400"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -86,7 +79,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${georama.variable} ${londrinaSolid.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${lilitaOne.variable} ${nunito.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <Navbar />
         <main className="pt-[72px]">{children}</main>

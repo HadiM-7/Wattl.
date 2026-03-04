@@ -46,7 +46,7 @@ export function StationRequestForm() {
       <input type="hidden" name="botcheck" />
       <Input
         label="VENUE NAME"
-        placeholder="e.g. The Local Bar & Grill"
+        placeholder="e.g. The Corner Cafe"
         error={errors.venueName?.message}
         {...register("venueName", { required: "Venue name is required" })}
       />
@@ -61,7 +61,7 @@ export function StationRequestForm() {
       <Input
         label="EMAIL ADDRESS"
         type="email"
-        placeholder="e.g. email@gmail.com"
+        placeholder="e.g. hello@yourcafe.com.au"
         error={errors.email?.message}
         {...register("email", {
           required: "Email is required",

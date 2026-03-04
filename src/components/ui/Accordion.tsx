@@ -25,7 +25,7 @@ export function Accordion({ items, className }: AccordionProps) {
         return (
           <div
             key={index}
-            className="overflow-hidden rounded-card bg-brand-black"
+            className="overflow-hidden rounded-card border-3 border-brand-black bg-brand-blue shadow-[4px_4px_0_#1A1A1A]"
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : index)}

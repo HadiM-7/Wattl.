@@ -21,7 +21,7 @@ const paymentIcons = ["Visa", "MC", "Amex", "GPay", "APay", "PayPal"];
 
 export function Footer() {
   return (
-    <footer className="relative bg-brand-black text-white overflow-hidden">
+    <footer className="relative bg-brand-blue text-white overflow-hidden">
       {/* Large branded watermark background - spans footer width */}
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden"
@@ -46,7 +46,7 @@ export function Footer() {
         <div className="relative grid grid-cols-2 gap-8 md:grid-cols-3">
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h3 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wide text-gray-400">
+              <h3 className="mb-4 font-heading text-sm font-semibold uppercase tracking-wide text-brand-yellow">
                 {title}
               </h3>
               <ul className="flex flex-col gap-3">
@@ -54,7 +54,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-gray-300 transition-colors hover:text-brand-yellow"
+                      className="text-sm font-bold text-white/60 transition-colors hover:text-brand-yellow"
                     >
                       {link.label}
                     </Link>
@@ -66,7 +66,7 @@ export function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="relative my-10 h-px bg-gray-800" />
+        <div className="relative my-10 h-px bg-white/20" />
 
         {/* Bottom section */}
         <div className="relative flex flex-col items-center gap-6">
@@ -83,7 +83,7 @@ export function Footer() {
             {paymentIcons.map((icon) => (
               <span
                 key={icon}
-                className="text-xs text-gray-500 transition-colors hover:text-white"
+                className="text-xs text-white/50 transition-colors hover:text-white"
                 title={icon}
               >
                 {icon}
@@ -91,7 +91,7 @@ export function Footer() {
             ))}
           </div>
 
-          <p className="text-center text-xs text-gray-500">
+          <p className="text-center text-xs text-white/40">
             &copy; {new Date().getFullYear()} Wattl Charging PTY LTD. All rights
             reserved.
           </p>

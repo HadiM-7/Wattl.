@@ -44,7 +44,7 @@ export function SuggestLocationForm() {
       <input type="hidden" name="botcheck" />
       <Input
         label="ESTABLISHMENT / OCCASION"
-        placeholder="e.g. Bondi Beach Cafe"
+        placeholder="e.g. The Corner Cafe"
         error={errors.establishment?.message}
         {...register("establishment", {
           required: "This field is required",

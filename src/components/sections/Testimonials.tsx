@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import { WaveDivider } from "@/components/ui/WaveDivider";
+import { SquigglyDivider } from "@/components/ui/SquigglyDivider";
 
 const testimonials = [
   {
@@ -13,6 +13,7 @@ const testimonials = [
     name: "Sarah Chen",
     location: "Knockout 2025",
     rotate: "-1deg",
+    shadowColor: "#38AAD4",
   },
   {
     quote:
@@ -20,6 +21,7 @@ const testimonials = [
     name: "Ash Berry",
     location: "Burwood RSL",
     rotate: "1.5deg",
+    shadowColor: "#003CA7",
   },
   {
     quote:
@@ -27,6 +29,7 @@ const testimonials = [
     name: "Phillip Keynes",
     location: "GYG Restaurant",
     rotate: "-0.5deg",
+    shadowColor: "#E88D9D",
   },
 ];
 
@@ -77,20 +80,20 @@ function AnimatedCounter({
 export function Testimonials() {
   return (
     <>
-      <section className="bg-brand-off-white py-16 md:py-24">
+      <section className="bg-brand-off-white pt-12 pb-20 md:pt-16 md:pb-32">
         <div className="mx-auto max-w-[1200px] px-4 md:px-6">
           {/* Parrot accent */}
-          <div className="pointer-events-none mb-4 opacity-40" aria-hidden="true">
+          <div className="pointer-events-none mb-4" aria-hidden="true">
             <Image
               src="/images/decorations/parrot.png"
               alt=""
-              width={60}
-              height={60}
-              className="h-14 w-14 object-contain"
+              width={120}
+              height={120}
+              className="h-28 w-28 object-contain md:h-36 md:w-36"
             />
           </div>
 
-          <div className="grid gap-12 md:grid-cols-2 md:items-start">
+          <div className="grid gap-16 md:grid-cols-2 md:items-start">
             {/* Left column — text + stats */}
             <div>
               <h2 className="mb-4 font-heading text-3xl font-bold text-brand-blue md:text-[40px]">
@@ -100,7 +103,7 @@ export function Testimonials() {
                   <span className="text-brand-yellow">.</span>
                 </span>
               </h2>
-              <p className="mb-10 max-w-md text-gray-600">
+              <p className="mb-10 max-w-md text-brand-black/70" style={{ fontWeight: 700 }}>
                 Real stories from those who stayed connected thanks to our
                 stations. When the battery drops, we bring the energy.
               </p>
@@ -121,23 +124,23 @@ export function Testimonials() {
               </div>
 
               {/* Kookaburra decoration */}
-              <div className="pointer-events-none mt-8 opacity-35" aria-hidden="true">
+              <div className="pointer-events-none mt-8" aria-hidden="true">
                 <Image
                   src="/images/decorations/kookaburra.png"
                   alt=""
-                  width={72}
-                  height={72}
-                  className="h-[4.2rem] w-[4.2rem] object-contain"
+                  width={130}
+                  height={130}
+                  className="h-28 w-28 object-contain md:h-36 md:w-36"
                 />
               </div>
             </div>
 
             {/* Right column — testimonial cards */}
-            <div className="relative flex flex-col gap-4">
+            <div className="relative flex flex-col gap-6">
               {/* Kangaroo accent behind cards */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 0.3, scale: 1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="pointer-events-none absolute -top-8 -left-4"
@@ -148,7 +151,7 @@ export function Testimonials() {
                   alt=""
                   width={120}
                   height={120}
-                  className="h-[7.2rem] w-[7.2rem] object-contain"
+                  className="h-[9rem] w-[9rem] object-contain"
                 />
               </motion.div>
               {testimonials.map((t, i) => (
@@ -158,8 +161,11 @@ export function Testimonials() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="relative rounded-card bg-brand-yellow p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                  style={{ transform: `rotate(${t.rotate})` }}
+                  className="relative rounded-card border-3 border-brand-black bg-brand-yellow p-6 transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    transform: `rotate(${t.rotate})`,
+                    boxShadow: `5px 5px 0 ${t.shadowColor}`,
+                  }}
                 >
                   <div className="mb-3 flex gap-1">
                     {Array.from({ length: 5 }).map((_, j) => (
@@ -173,7 +179,7 @@ export function Testimonials() {
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <p className="text-sm font-semibold text-brand-black">
-                    — {t.name}
+                    {t.name}
                   </p>
                   <p className="text-xs text-brand-black/60">{t.location}</p>
                 </motion.div>
@@ -182,7 +188,9 @@ export function Testimonials() {
           </div>
         </div>
       </section>
-      <WaveDivider topColor="#FFFFF3" bottomColor="#000000" />
+      <div className="-mt-16 relative z-10">
+        <SquigglyDivider color="#38AAD4" bg="#38AAD4" />
+      </div>
     </>
   );
 }

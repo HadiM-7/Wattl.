@@ -52,7 +52,6 @@ export function DeleteAccountForm() {
       <Input
         label="FULL NAME"
         placeholder="e.g. John Doe"
-        dark
         error={errors.name?.message}
         {...register("name", { required: "Name is required" })}
       />
@@ -60,7 +59,6 @@ export function DeleteAccountForm() {
         label="EMAIL ADDRESS"
         type="email"
         placeholder="e.g. email@gmail.com"
-        dark
         error={errors.email?.message}
         {...register("email", {
           required: "Email is required",
@@ -72,11 +70,10 @@ export function DeleteAccountForm() {
       />
       <Textarea
         label="REASON (optional)"
-        placeholder="Why do you want to delete your account?"
-        dark
+        placeholder="Tell us why you'd like to delete your account..."
         {...register("reason")}
       />
-      <Button variant="ghost" type="submit" isLoading={isSubmitting}>
+      <Button variant="dark" type="submit" isLoading={isSubmitting}>
         Submit Request
       </Button>
     </form>

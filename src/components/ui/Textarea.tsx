@@ -28,10 +28,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           aria-describedby={error ? `${inputId}-error` : undefined}
           rows={4}
           className={cn(
-            "rounded-input border px-4 py-3 text-base transition-colors focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30 focus:outline-none",
+            "rounded-input border-2 border-brand-black px-4 py-3 text-base transition-all focus:shadow-[3px_3px_0_#003CA7] focus:outline-none",
             dark
-              ? "border-gray-600 bg-gray-900 text-white placeholder:text-gray-500"
-              : "border-input-border bg-white text-brand-black placeholder:text-gray-400",
+              ? "bg-brand-off-white text-brand-black placeholder:text-gray-500"
+              : "bg-white text-brand-black placeholder:text-gray-400",
             error && "border-error",
             className
           )}

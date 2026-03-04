@@ -1,33 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { QrCode, Zap, MapPin } from "lucide-react";
-import { WaveDivider } from "@/components/ui/WaveDivider";
+import { SquigglyDivider } from "@/components/ui/SquigglyDivider";
 
 const steps = [
   {
-    icon: QrCode,
-    number: "01",
+    emoji: "📱",
+    num: 1,
     title: "Scan the QR Code",
     description:
-      "Instantly unlock a power bank at any of our stations. No app download required for checkout.",
-    animation: "animate-pulse",
+      "Walk up to any Wattl station and scan the QR code. No app download required, just your phone camera.",
+    color: "#FFC600",
   },
   {
-    icon: Zap,
-    number: "02",
-    title: "Charge on the Go",
+    emoji: "🔋",
+    num: 2,
+    title: "Grab & Charge",
     description:
-      "High-speed charging compatible with all major devices. Keep moving while you refuel your tech.",
-    animation: "animate-[glow_2s_ease-in-out_infinite]",
+      "A power bank pops out instantly. It comes with built-in Lightning, USB-C, and Micro-USB cables.",
+    color: "#38AAD4",
   },
   {
-    icon: MapPin,
-    number: "03",
+    emoji: "⚡",
+    num: 3,
+    title: "Stay Powered Up",
+    description:
+      "High-speed charging at up to 10W output. Most phones get a meaningful boost in just 15–20 minutes.",
+    color: "#208334",
+  },
+  {
+    emoji: "🔄",
+    num: 4,
     title: "Return Anywhere",
     description:
-      "Done charging? Simply drop the bank off at any station in our city-wide network.",
-    animation: "animate-[pulse_2s_ease-in-out_infinite]",
+      "Done charging? Drop the power bank at any station in our network. Simple half-hourly pricing, capped at $20/day.",
+    color: "#F4722B",
   },
 ];
 
@@ -38,56 +45,86 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+const stepVariants = {
+  hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 export function HowItWorks() {
   return (
     <>
-      <section id="how-it-works" className="bg-brand-black py-16 md:py-24">
-        <div className="mx-auto max-w-[1200px] px-4 md:px-6">
+      <section id="how-it-works" className="relative z-10 bg-brand-blue py-16 pb-24 md:py-24 md:pb-32">
+        <div className="mx-auto max-w-[700px] px-4 md:px-6">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 font-heading text-3xl font-bold text-white md:text-[40px]">
-              Fast Charging,{" "}
-              <em className="text-brand-yellow">Zero Hassle.</em>
+            <h2
+              className="mb-4 font-heading text-white"
+              style={{
+                fontSize: "clamp(36px, 6vw, 52px)",
+                textShadow: "3px 3px 0 #1A1A1A",
+              }}
+            >
+              How It Works<span className="text-brand-yellow">?</span>
             </h2>
-            <p className="mx-auto max-w-xl text-gray-400">
-              Portable banks that fit in your pocket. Compatible with Lightning,
-              USB-C, and Micro-USB.
+            <p className="mx-auto max-w-xl text-white/80">
+              Four simple steps to keep your customers connected.
             </p>
           </div>
 
+          {/* Vertical timeline */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
-            className="grid gap-6 md:grid-cols-3"
+            className="flex flex-col items-center"
           >
-            {steps.map((step) => (
-              <motion.div
-                key={step.number}
-                variants={cardVariants}
-                className="group rounded-card border border-gray-800 bg-gray-950 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-yellow/30 hover:shadow-[0_0_30px_rgba(255,198,0,0.1)]"
-              >
-                <step.icon className="mb-6 h-12 w-12 text-brand-yellow" />
-                <p className="mb-2 font-mono text-sm text-brand-yellow/60">
-                  {step.number}
-                </p>
-                <h3 className="mb-3 font-subheading text-xl text-white">
-                  {step.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-gray-400">
-                  {step.description}
-                </p>
+            {steps.map((step, i) => (
+              <motion.div key={step.num} variants={stepVariants} className="w-full">
+                <div className="flex items-start gap-5">
+                  {/* Icon circle */}
+                  <div
+                    className="flex h-[70px] w-[70px] shrink-0 items-center justify-center rounded-full border-3 border-brand-black text-[32px]"
+                    style={{
+                      backgroundColor: step.color,
+                      boxShadow: "4px 4px 0 #1A1A1A",
+                    }}
+                  >
+                    {step.emoji}
+                  </div>
+
+                  {/* Content card */}
+                  <div
+                    className="flex-1 rounded-card border-3 border-brand-black bg-white p-5 transition-all duration-200 hover:-translate-y-1"
+                    style={{ boxShadow: `5px 5px 0 ${step.color}` }}
+                  >
+                    <p className="mb-1 text-[13px] font-[900] uppercase tracking-[3px] text-brand-black/40">
+                      Step {step.num}
+                    </p>
+                    <h3 className="mb-2 font-heading text-xl text-brand-black">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-brand-black/70" style={{ fontWeight: 600 }}>
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Connector line between steps */}
+                {i < steps.length - 1 && (
+                  <div className="flex justify-start pl-[33px]">
+                    <div
+                      className="my-2 h-12 w-1 rounded-full bg-white/30"
+                    />
+                  </div>
+                )}
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
-      <WaveDivider topColor="#000000" bottomColor="#FFFFF3" />
+      <div className="relative z-0">
+        <SquigglyDivider color="#FFC600" bg="#FFFFF3" />
+      </div>
     </>
   );
 }

@@ -1,119 +1,166 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { WaveDivider } from "@/components/ui/WaveDivider";
-import { ArrowRight } from "lucide-react";
+import { SquigglyDivider } from "@/components/ui/SquigglyDivider";
 
 export function Hero() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <>
-      <section className="relative overflow-hidden bg-brand-yellow">
-        {/* Subtle radial gradient overlay */}
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.25) 0%, transparent 60%)",
-          }}
-        />
+      <section className="relative min-h-screen overflow-hidden">
+        {/* Two-color background split */}
+        <div className="absolute inset-0 flex">
+          <div className="w-1/2 bg-brand-yellow" />
+          <div className="w-1/2 bg-brand-teal" />
+        </div>
 
-        {/* Cockatoo decoration (top-left) */}
-        <div className="pointer-events-none absolute top-8 left-8 opacity-40" aria-hidden="true">
+        {/* Hand-drawn wavy vertical divider SVG */}
+        <svg
+          className="pointer-events-none absolute inset-0 z-10 h-full w-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          style={{ shapeRendering: "geometricPrecision" }}
+        >
+          {/* Yellow fill (left side) — extended past center to prevent gap */}
+          <path
+            d="M0 0 L50 0 C48 8, 55 14, 52 22 C49 30, 56 36, 53 44 C50 52, 57 58, 54 66 C51 74, 56 80, 53 88 C51 94, 54 97, 52 100 L0 100 Z"
+            fill="#FFC600"
+          />
+          {/* Teal fill (right side) — extended past center to prevent gap */}
+          <path
+            d="M100 0 L46 0 C44 8, 51 14, 48 22 C45 30, 52 36, 49 44 C46 52, 53 58, 50 66 C47 74, 52 80, 49 88 C47 94, 50 97, 48 100 L100 100 Z"
+            fill="#38AAD4"
+          />
+          {/* Squiggly line stroke on top — draws itself top to bottom */}
+          <motion.path
+            d="M48 0 C46 8, 53 14, 50 22 C47 30, 54 36, 51 44 C48 52, 55 58, 52 66 C49 74, 54 80, 51 88 C49 94, 52 97, 50 100"
+            fill="none"
+            stroke="#1A1A1A"
+            strokeWidth="0.3"
+            strokeLinecap="round"
+            opacity="0.25"
+            initial={prefersReducedMotion ? false : { pathLength: 0 }}
+            animate={prefersReducedMotion ? false : { pathLength: 1 }}
+            transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
+          />
+        </svg>
+
+        {/* Wattle flower decoration (top-left) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="pointer-events-none absolute -top-2 -left-8 z-20"
+          aria-hidden="true"
+        >
+          <Image
+            src="/images/decorations/wattle.png"
+            alt=""
+            width={280}
+            height={280}
+            className="h-56 w-56 object-contain md:h-80 md:w-80"
+          />
+        </motion.div>
+
+        {/* Cockatoo decoration (bottom-left) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="pointer-events-none absolute bottom-8 left-6 z-20 md:left-12"
+          aria-hidden="true"
+        >
           <Image
             src="/images/decorations/cockatoo.png"
             alt=""
-            width={96}
-            height={96}
-            className="h-20 w-20 object-contain md:h-24 md:w-24"
+            width={200}
+            height={200}
+            className="h-44 w-44 object-contain md:h-60 md:w-60"
           />
-        </div>
+        </motion.div>
 
-        {/* Koala decoration (bottom-right) */}
-        <div className="pointer-events-none absolute bottom-12 right-8 opacity-35" aria-hidden="true">
+        {/* Kangaroo decoration (bottom-right) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="pointer-events-none absolute right-4 bottom-10 z-20 md:right-12"
+          aria-hidden="true"
+        >
           <Image
-            src="/images/decorations/koala.png"
+            src="/images/decorations/kangaroo.png"
             alt=""
-            width={120}
-            height={120}
-            className="h-24 w-24 object-contain md:h-[7.2rem] md:w-[7.2rem]"
+            width={160}
+            height={160}
+            className="h-36 w-36 object-contain md:h-52 md:w-52"
           />
-        </div>
+        </motion.div>
 
-        <div className="mx-auto grid max-w-[1200px] gap-8 px-4 pt-12 pb-20 md:grid-cols-2 md:items-center md:px-6 md:pt-20 md:pb-28">
-          {/* Text column */}
-          <div className="relative z-10">
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-4 font-subheading text-sm tracking-widest text-brand-blue/70"
-            >
-              —— Portable Power Bank Rentals
-            </motion.p>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-6 font-heading text-4xl leading-[1.1] font-bold tracking-tight text-brand-blue md:text-[56px]"
-            >
-              Don&apos;t Let a Dead Battery Kill the{" "}
-              <em className="not-italic text-brand-black">Vibe</em>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mb-8 max-w-md text-lg leading-relaxed text-brand-blue/80"
-            >
-              Australia&apos;s first dedicated power bank rental network. Grab a
-              charger, stay connected, return it when you&apos;re done.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-wrap items-center gap-4"
-            >
-              <Link href="/locations">
-                <Button variant="dark">Find a Station</Button>
-              </Link>
-              <Link
-                href="/#how-it-works"
-                className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-blue transition-colors hover:text-brand-black"
-              >
-                See How It Works
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </motion.div>
-          </div>
-
-          {/* Image column */}
+        {/* Content - centred */}
+        <div className="relative z-20 mx-auto flex min-h-screen max-w-[780px] flex-col items-center justify-center px-4 text-center md:px-6">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative flex justify-center md:justify-end"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-4"
           >
-            <div className="relative z-10 md:translate-y-10">
-              <Image
-                src="/images/station.png"
-                alt="Wattl charging station — a bright yellow kiosk with multiple power bank slots"
-                width={450}
-                height={500}
-                className="h-auto w-full max-w-[350px] object-contain md:max-w-[450px]"
-                priority
-              />
-            </div>
+            <Image
+              src="/images/wattl-light.png"
+              alt="Wattl."
+              width={320}
+              height={100}
+              className="mx-auto h-auto w-[260px] md:w-[320px]"
+              style={{
+                filter: "drop-shadow(3px 3px 0 #003CA7)",
+                maxWidth: "80vw",
+              }}
+              priority
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="mb-7"
+          >
+            <span className="inline-block rounded-md bg-brand-black px-7 py-1.5 text-[clamp(14px,3vw,22px)] font-[900] uppercase tracking-[4px] text-white">
+              Fast Charging
+            </span>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-10 max-w-[560px] text-[clamp(18px,3vw,26px)] leading-[1.4] text-brand-black"
+            style={{ fontWeight: 700 }}
+          >
+            Portable powerbank rentals for venues across Australia. Keep your
+            customers charged &amp; happy.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-wrap items-center justify-center gap-4"
+          >
+            <Link href="/partner-with-us">
+              <Button variant="dark">Partner With Us</Button>
+            </Link>
+            <Link href="/#how-it-works">
+              <Button variant="secondary">How It Works</Button>
+            </Link>
           </motion.div>
         </div>
       </section>
-      <WaveDivider topColor="#FFC600" bottomColor="#000000" />
+      <SquigglyDivider color="#1A1A1A" bg="#003CA7" />
     </>
   );
 }

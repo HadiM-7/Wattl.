@@ -12,7 +12,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/#how-it-works", label: "How It Works" },
   { href: "/locations", label: "Locations" },
-  { href: "/partner-with-us", label: "Partner With Us" },
   { href: "/contact-us", label: "Contact Support" },
 ];
 
@@ -20,9 +19,21 @@ export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [howItWorksActive, setHowItWorksActive] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+
+      // Track if #how-it-works section is in view
+      const section = document.getElementById("how-it-works");
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        setHowItWorksActive(rect.top <= 100 && rect.bottom > 100);
+      } else {
+        setHowItWorksActive(false);
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -34,12 +45,9 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
-  // Only show active state for main pages, NOT for section anchors (like #how-it-works)
   const isActive = (href: string) => {
-    // Never show active for anchor links
-    if (href.startsWith("/#")) return false;
-    // Only show active for actual pages
-    if (href === "/") return pathname === "/";
+    if (href === "/#how-it-works") return howItWorksActive;
+    if (href === "/") return pathname === "/" && !howItWorksActive;
     return pathname.startsWith(href);
   };
 
@@ -55,79 +63,92 @@ export function Navbar() {
 
   return (
     <>
-      <nav
+      {/* Outer wrapper — always full width, provides top padding when scrolled */}
+      <div
         className={cn(
-          "fixed top-0 right-0 left-0 z-50 transition-all duration-300",
-          scrolled
-            ? "bg-white/95 shadow-md backdrop-blur-md"
-            : "bg-transparent"
+          "fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+          scrolled ? "px-4 pt-3 md:px-8" : "px-0 pt-0"
         )}
       >
-        <div className="mx-auto flex max-w-[1200px] items-center justify-between px-4 py-4 md:px-6">
-          <Link href="/" aria-label="Wattl Home">
-            <Image
-              src="/images/wattl-dark.png"
-              alt="Wattl."
-              width={120}
-              height={40}
-              className="h-8 w-auto md:h-10"
-              priority
-            />
-          </Link>
-
-          {/* Desktop nav */}
-          <div className="hidden items-center gap-8 lg:flex">
-            {navLinks.map((link) => {
-              const active = isActive(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className="group relative text-sm font-semibold uppercase tracking-wide text-brand-blue transition-colors hover:text-brand-blue/80"
-                >
-                  {link.label}
-                  <span
-                    className={cn(
-                      "absolute -bottom-1 left-0 h-[3px] w-full rounded-full bg-brand-yellow transition-opacity duration-300",
-                      active
-                        ? "opacity-100"
-                        : "opacity-0 group-hover:opacity-100"
-                    )}
-                  />
-                </Link>
-              );
-            })}
-            <Link href="/locations">
-              <Button variant="dark" className="text-xs">
-                Find a Station
-              </Button>
-            </Link>
-          </div>
-
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="relative z-50 flex h-11 w-11 items-center justify-center lg:hidden"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          >
-            {mobileOpen ? (
-              <X className="h-6 w-6 text-white" />
-            ) : (
-              <Menu
+        <nav
+          className={cn(
+            "mx-auto transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+            scrolled
+              ? "max-w-[1100px] rounded-full border-2 border-brand-black/10 bg-white/90 shadow-lg backdrop-blur-xl"
+              : "max-w-full bg-transparent"
+          )}
+        >
+          <div className={cn(
+            "mx-auto flex max-w-[1200px] items-center justify-between transition-all duration-500",
+            scrolled ? "px-5 py-3.5 md:px-6" : "px-4 py-4 md:px-6"
+          )}>
+            <Link href="/" aria-label="Wattl Home">
+              <Image
+                src="/images/wattl-dark.png"
+                alt="Wattl."
+                width={130}
+                height={44}
                 className={cn(
-                  "h-6 w-6",
-                  scrolled ? "text-brand-black" : "text-brand-blue"
+                  "w-auto transition-all duration-500",
+                  scrolled ? "h-6 md:h-8" : "h-8 md:h-10"
                 )}
+                priority
               />
-            )}
-          </button>
-        </div>
-      </nav>
+            </Link>
+
+            {/* Desktop nav */}
+            <div className="hidden items-center gap-1 lg:flex">
+              {navLinks.map((link) => {
+                const active = isActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => handleNavClick(link.href)}
+                    className={cn(
+                      "rounded-full px-4 py-1.5 text-sm font-[800] transition-all duration-300",
+                      active
+                        ? "border-2 border-brand-black bg-brand-yellow text-brand-black"
+                        : scrolled
+                          ? "border-2 border-transparent text-brand-black/70 hover:bg-brand-black/5 hover:text-brand-black"
+                          : "border-2 border-transparent text-brand-blue hover:text-brand-black"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+              <Link href="/partner-with-us">
+                <Button variant="primary" className="ml-1 text-xs">
+                  Partner With Us
+                </Button>
+              </Link>
+            </div>
+
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="relative z-50 flex h-11 w-11 items-center justify-center lg:hidden"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            >
+              {mobileOpen ? (
+                <X className="h-6 w-6 text-white" />
+              ) : (
+                <Menu
+                  className={cn(
+                    "h-6 w-6 transition-colors duration-300",
+                    scrolled ? "text-brand-black" : "text-brand-blue"
+                  )}
+                />
+              )}
+            </button>
+          </div>
+        </nav>
+      </div>
 
       {/* Mobile overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-brand-black/95 backdrop-blur-sm">
+        <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 bg-brand-blue/95 backdrop-blur-sm">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -138,9 +159,9 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/locations" onClick={() => setMobileOpen(false)}>
+          <Link href="/partner-with-us" onClick={() => setMobileOpen(false)}>
             <Button variant="primary" className="mt-4 text-base">
-              Find a Station
+              Partner With Us
             </Button>
           </Link>
         </div>

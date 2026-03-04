@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function DeleteAccountPage() {
   return (
-    <section className="bg-brand-black py-16 md:py-24">
+    <section className="bg-brand-blue py-16 md:py-24">
       <div className="mx-auto max-w-[1200px] px-4 md:px-6">
         <div className="grid gap-10 md:grid-cols-2 md:items-start">
           {/* Left text */}
@@ -18,25 +18,30 @@ export default function DeleteAccountPage() {
             <h1 className="mb-4 font-heading text-3xl font-bold text-white md:text-[48px]">
               Delete your account
             </h1>
-            <p className="max-w-sm text-gray-400">
+            <p className="max-w-sm text-white/70" style={{ fontWeight: 700 }}>
               If you wish to permanently delete your Wattl account and
               associated data, fill out the form and we&apos;ll process your
               request.
             </p>
             {/* Parrot decoration */}
-            <div className="pointer-events-none mt-8 opacity-30" aria-hidden="true">
+            <div className="pointer-events-none mt-8" aria-hidden="true">
               <Image
                 src="/images/decorations/parrot.png"
                 alt=""
-                width={60}
-                height={60}
-                className="h-14 w-14 object-contain"
+                width={120}
+                height={120}
+                className="h-28 w-28 object-contain md:h-36 md:w-36"
               />
             </div>
           </div>
 
-          {/* Right form */}
-          <DeleteAccountForm />
+          {/* Right form - on surface */}
+          <div
+            className="rounded-card border-3 border-brand-black bg-white p-8"
+            style={{ boxShadow: "6px 6px 0 #E88D9D" }}
+          >
+            <DeleteAccountForm />
+          </div>
         </div>
       </div>
     </section>

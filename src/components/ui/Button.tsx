@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import { ButtonHTMLAttributes, forwardRef } from "react";
-import { motion } from "framer-motion";
 
 type ButtonVariant = "primary" | "secondary" | "dark" | "ghost";
 
@@ -11,12 +10,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-brand-yellow text-brand-blue border-transparent hover:brightness-110",
+    "bg-brand-yellow text-brand-blue border-3 border-brand-black shadow-[4px_4px_0_#1A1A1A] hover:brightness-110 active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_#1A1A1A]",
   secondary:
-    "bg-transparent text-brand-blue border-2 border-brand-blue hover:bg-brand-blue hover:text-white",
-  dark: "bg-brand-black text-white border-transparent hover:brightness-125",
+    "bg-transparent text-brand-blue border-3 border-brand-blue shadow-[4px_4px_0_#003CA7] hover:bg-brand-blue hover:text-white active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_#003CA7]",
+  dark: "bg-brand-black text-white border-3 border-brand-black shadow-[4px_4px_0_#38AAD4] hover:brightness-125 active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_#38AAD4]",
   ghost:
-    "bg-transparent text-white border-2 border-white hover:bg-white hover:text-brand-black",
+    "bg-transparent text-white border-3 border-white shadow-[4px_4px_0_#1A1A1A] hover:bg-white hover:text-brand-black active:translate-x-[2px] active:translate-y-[2px] active:shadow-[2px_2px_0_#1A1A1A]",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -24,21 +23,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     { className, variant = "primary", isLoading, children, disabled, ...props },
     ref
   ) => {
-    const MotionButton = motion.button as any;
-
     return (
-      <MotionButton
+      <button
         ref={ref}
         disabled={disabled || isLoading}
-        whileHover={{ scale: 1.05, rotate: 1 }}
-        whileTap={{ scale: 0.95, rotate: -0.5 }}
         className={cn(
-          "inline-flex cursor-pointer items-center justify-center rounded-button px-6 py-3 text-sm font-semibold uppercase tracking-[0.05em] transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50",
+          "inline-flex cursor-pointer items-center justify-center rounded-button px-6 py-3 text-sm font-[900] uppercase tracking-[0.05em] transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50",
           variantStyles[variant],
           className
         )}
         type="button"
-        {...(props as any)}
+        {...props}
       >
         {isLoading ? (
           <svg
@@ -62,7 +57,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           </svg>
         ) : null}
         {children}
-      </MotionButton>
+      </button>
     );
   }
 );
