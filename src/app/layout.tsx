@@ -111,7 +111,7 @@ export default function RootLayout({
         className={`${lilitaOne.variable} ${nunito.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <Navbar />
-        <main className="pt-[72px]">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

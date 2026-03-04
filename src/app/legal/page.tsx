@@ -11,7 +11,7 @@ export default function LegalPage() {
   const [activeTab, setActiveTab] = useState<Tab>("Terms of Service");
 
   return (
-    <section className="relative bg-brand-off-white py-16 md:py-24">
+    <section className="relative bg-brand-off-white pt-[calc(72px+4rem)] pb-16 md:pt-[calc(72px+6rem)] md:pb-24">
       {/* Toucan decoration */}
       <div className="pointer-events-none absolute top-8 right-8" aria-hidden="true">
         <Image
