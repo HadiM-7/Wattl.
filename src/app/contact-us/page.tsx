@@ -82,13 +82,13 @@ export default function ContactUsPage() {
       {/* Contact Form Section */}
       <section className="relative bg-brand-blue py-16 md:py-24">
         {/* Waratah decoration */}
-        <div className="pointer-events-none absolute top-8 right-4 md:right-12" aria-hidden="true">
+        <div className="pointer-events-none absolute top-8 right-4 hidden md:block md:right-12" aria-hidden="true">
           <Image
             src="/images/decorations/waratah.png"
             alt=""
             width={120}
             height={120}
-            className="h-20 w-20 object-contain md:h-32 md:w-32"
+            className="h-32 w-32 object-contain"
           />
         </div>
         <div className="mx-auto max-w-[1200px] px-4 md:px-6">

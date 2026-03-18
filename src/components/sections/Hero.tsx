@@ -55,7 +55,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="pointer-events-none absolute -top-2 -left-8 z-20"
+          className="pointer-events-none absolute -top-4 -left-10 z-20 md:-top-2 md:-left-8"
           aria-hidden="true"
         >
           <Image
@@ -63,7 +63,7 @@ export function Hero() {
             alt=""
             width={280}
             height={280}
-            className="h-56 w-56 object-contain md:h-80 md:w-80"
+            className="h-36 w-36 object-contain md:h-80 md:w-80"
           />
         </motion.div>
 
@@ -138,8 +138,12 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mb-10 max-w-[560px] text-[clamp(18px,3vw,26px)] leading-[1.4] text-brand-black"
-            style={{ fontWeight: 700 }}
+            className="mb-10 max-w-[560px] text-[clamp(18px,3vw,26px)] font-[800] leading-[1.4] text-white"
+            style={{
+              WebkitTextStroke: "1.5px #1A1A1A",
+              paintOrder: "stroke fill",
+              textShadow: "3px 3px 0 #003CA7",
+            }}
           >
             Portable powerbank rentals for venues across Australia. Keep your
             customers charged &amp; happy.
@@ -152,10 +156,10 @@ export function Hero() {
             className="flex flex-wrap items-center justify-center gap-4"
           >
             <Link href="/partner-with-us">
-              <Button variant="dark">Partner With Us</Button>
+              <Button variant="dark">Get a kiosk</Button>
             </Link>
             <Link href="/#how-it-works">
-              <Button variant="secondary">How It Works</Button>
+              <Button variant="secondary" className="bg-brand-cream">How It Works</Button>
             </Link>
           </motion.div>
         </div>

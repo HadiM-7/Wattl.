@@ -32,7 +32,7 @@ export function Accordion({ items, className }: AccordionProps) {
               className="flex w-full cursor-pointer items-center justify-between px-6 py-4 text-left"
               aria-expanded={isOpen}
             >
-              <span className="pr-4 font-heading text-base font-semibold text-brand-yellow">
+              <span className="pr-4 font-heading text-xl font-light text-brand-yellow">
                 {item.question}
               </span>
               {isOpen ? (
@@ -49,7 +49,7 @@ export function Accordion({ items, className }: AccordionProps) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  <p className="px-6 pb-5 text-sm leading-relaxed text-gray-300">
+                  <p className="px-6 pb-5 text-base leading-relaxed text-gray-300">
                     {item.answer}
                   </p>
                 </motion.div>

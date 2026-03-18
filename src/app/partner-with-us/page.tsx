@@ -63,23 +63,23 @@ export default function PartnerWithUsPage() {
       {/* Benefits Hero */}
       <section className="relative flex min-h-screen items-center bg-brand-yellow py-24 md:py-40">
         {/* Toucan decoration */}
-        <div className="pointer-events-none absolute top-8 right-4 md:right-12" aria-hidden="true">
+        <div className="pointer-events-none absolute top-8 right-4 hidden md:block md:right-12" aria-hidden="true">
           <Image
             src="/images/decorations/toucan.png"
             alt=""
             width={180}
             height={180}
-            className="h-32 w-32 object-contain md:h-44 md:w-44"
+            className="h-44 w-44 object-contain"
           />
         </div>
         {/* Wattle flower decoration */}
-        <div className="pointer-events-none absolute bottom-4 left-4 md:left-8" aria-hidden="true">
+        <div className="pointer-events-none absolute bottom-4 left-4 hidden md:block md:left-8" aria-hidden="true">
           <Image
             src="/images/decorations/wattle-flower.png"
             alt=""
             width={160}
             height={160}
-            className="h-28 w-28 object-contain md:h-40 md:w-40"
+            className="h-40 w-40 object-contain"
           />
         </div>
         <div className="mx-auto max-w-[1200px] px-4 md:px-6">
@@ -115,10 +115,10 @@ export default function PartnerWithUsPage() {
                   >
                     {benefit.emoji}
                   </div>
-                  <h3 className="mb-2 font-heading text-lg font-bold text-brand-black">
+                  <h3 className="mb-2 font-heading text-2xl font-normal text-brand-black">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-brand-black/70" style={{ fontWeight: 700 }}>
+                  <p className="text-[15px] leading-relaxed text-brand-black/80" style={{ fontWeight: 500 }}>
                     {benefit.description}
                   </p>
                 </Card>
@@ -133,13 +133,13 @@ export default function PartnerWithUsPage() {
       {/* Station Request Form */}
       <section className="relative bg-brand-pale-yellow py-20 md:py-32">
         {/* Cockatoo decoration */}
-        <div className="pointer-events-none absolute bottom-8 left-4 md:left-12" aria-hidden="true">
+        <div className="pointer-events-none absolute bottom-8 left-4 hidden md:block md:left-12" aria-hidden="true">
           <Image
             src="/images/decorations/cockatoo.png"
             alt=""
             width={130}
             height={130}
-            className="h-32 w-32 object-contain md:h-44 md:w-44"
+            className="h-44 w-44 object-contain"
           />
         </div>
         <div className="mx-auto max-w-lg px-4 text-center md:px-6">

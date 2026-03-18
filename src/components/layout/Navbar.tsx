@@ -21,6 +21,16 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [howItWorksActive, setHowItWorksActive] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia("(min-width: 1024px)").matches : false
+  );
+
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 1024px)");
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {
@@ -47,6 +57,10 @@ export function Navbar() {
   }, [mobileOpen]);
 
   const isDarkBg = ["/delete-account"].includes(pathname);
+  const isLightBg = ["/locations", "/contact-us", "/partner-with-us"].includes(pathname);
+
+  // Always show pill on mobile, only on scroll for desktop
+  const showPill = scrolled || !isDesktop;
 
   const isActive = (href: string) => {
     if (href === "/#how-it-works") return howItWorksActive;
@@ -70,30 +84,30 @@ export function Navbar() {
       <div
         className={cn(
           "fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
-          scrolled ? "px-4 pt-3 md:px-8" : "px-0 pt-0"
+          showPill ? "px-4 pt-3 md:px-8" : "px-0 pt-0"
         )}
       >
         <nav
           className={cn(
             "mx-auto transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
-            scrolled
+            showPill
               ? "max-w-[1100px] rounded-full border-2 border-brand-black/10 bg-white/90 shadow-lg backdrop-blur-xl"
               : "max-w-full bg-transparent"
           )}
         >
           <div className={cn(
             "mx-auto flex max-w-[1200px] items-center justify-between transition-all duration-500",
-            scrolled ? "px-5 py-3.5 md:px-6" : "px-4 py-4 md:px-6"
+            showPill ? "px-5 py-3.5 md:px-6" : "px-4 py-4 md:px-6"
           )}>
             <Link href="/" aria-label="Wattl Home">
               <Image
-                src={!scrolled && isDarkBg ? "/images/wattl-light.png" : "/images/wattl-dark.png"}
+                src={mobileOpen || (!showPill && isDarkBg) ? "/images/wattl-light.png" : "/images/wattl-dark.png"}
                 alt="Wattl."
                 width={130}
                 height={44}
                 className={cn(
                   "w-auto transition-all duration-500",
-                  scrolled ? "h-6 md:h-8" : "h-8 md:h-10"
+                  showPill ? "h-6 md:h-8" : "h-8 md:h-10"
                 )}
                 priority
               />
@@ -117,10 +131,12 @@ export function Navbar() {
                             ? "border-2 border-brand-yellow bg-brand-yellow text-brand-black"
                             : "border-2 border-brand-blue bg-brand-blue text-brand-yellow"
                         : scrolled
-                          ? "border-2 border-transparent text-brand-black/70 hover:bg-brand-black/5 hover:text-brand-black"
+                          ? "border-2 border-transparent text-brand-black/70 hover:bg-brand-cream hover:text-brand-black"
                           : isDarkBg
-                            ? "border-2 border-transparent text-white/90 hover:text-white"
-                            : "border-2 border-transparent text-brand-blue hover:text-brand-black"
+                            ? "border-2 border-transparent text-white/90 hover:bg-brand-cream hover:text-brand-black"
+                            : isLightBg
+                              ? "border-2 border-transparent text-brand-blue hover:bg-brand-cream hover:text-brand-black"
+                              : "border-2 border-transparent text-white hover:bg-brand-cream hover:text-brand-black"
                     )}
                   >
                     {link.label}
@@ -129,7 +145,7 @@ export function Navbar() {
               })}
               <Link href="/partner-with-us">
                 <Button variant={pathname === "/" || isDarkBg ? "primary" : "dark"} className="ml-1 text-xs">
-                  Partner With Us
+                  Get a kiosk
                 </Button>
               </Link>
             </div>
@@ -146,7 +162,7 @@ export function Navbar() {
                 <Menu
                   className={cn(
                     "h-6 w-6 transition-colors duration-300",
-                    scrolled ? "text-brand-black" : isDarkBg ? "text-white" : "text-brand-blue"
+                    showPill ? "text-brand-black" : isDarkBg ? "text-white" : "text-brand-blue"
                   )}
                 />
               )}
@@ -188,7 +204,7 @@ export function Navbar() {
             >
               <Link href="/partner-with-us" onClick={() => setMobileOpen(false)}>
                 <Button variant="primary" className="mt-4 text-base">
-                  Partner With Us
+                  Get a kiosk
                 </Button>
               </Link>
             </motion.div>
