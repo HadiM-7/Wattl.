@@ -21,9 +21,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [howItWorksActive, setHowItWorksActive] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(() =>
-    typeof window !== "undefined" ? window.matchMedia("(min-width: 1024px)").matches : false
-  );
+  const [isDesktop, setIsDesktop] = useState(true);
 
   useEffect(() => {
     const mql = window.matchMedia("(min-width: 1024px)");

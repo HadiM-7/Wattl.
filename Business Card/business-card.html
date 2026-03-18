@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wattl Business Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #e8e8e8;
+      font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
+    }
+
+    .card {
+      width: 1050px;
+      height: 600px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Split background via SVG — exact paths from Hero.tsx */
+    .bg-split {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .bg-split svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Decorations */
+    .decoration {
+      position: absolute;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .wattle-flower {
+      top: -16px;
+      left: -18px;
+      width: 210px;
+      height: auto;
+      opacity: 0.9;
+    }
+
+    .cockatoo {
+      top: 50%;
+      right: -10px;
+      transform: translateY(-50%);
+      width: 190px;
+      height: auto;
+      opacity: 0.85;
+    }
+
+    .kangaroo {
+      bottom: 75px;
+      left: 32px;
+      width: 150px;
+      height: auto;
+      opacity: 0.7;
+    }
+
+    /* Content layer */
+    .content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Logo image */
+    .logo-img {
+      width: 400px;
+      height: auto;
+      filter: drop-shadow(3px 3px 0 #003CA7);
+      margin-bottom: 12px;
+    }
+
+    /* Tagline pill (matching hero style) */
+    .tagline-pill {
+      display: inline-block;
+      background: #1A1A1A;
+      color: #FFFFFF;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      padding: 5px 22px;
+      border-radius: 6px;
+    }
+
+    /* Contact section — bottom left */
+    .contacts {
+      position: absolute;
+      bottom: 24px;
+      left: 36px;
+      z-index: 4;
+    }
+
+    .contact-line {
+      margin-bottom: 8px;
+      font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #003CA7;
+      line-height: 1;
+    }
+
+    .contact-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-name {
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .contact-role {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.6;
+    }
+
+    .contact-phone {
+      font-size: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    .contact-sep {
+      opacity: 0.35;
+      margin: 0 6px;
+    }
+
+    /* Email — bottom right */
+    .email {
+      position: absolute;
+      bottom: 28px;
+      right: 36px;
+      z-index: 4;
+      font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+    }
+
+    /* Website — top right */
+    .website {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 4;
+      font-family: 'Nunito', 'Segoe UI', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: none;
+        display: block;
+        padding: 0;
+        margin: 0;
+      }
+
+      .card {
+        box-shadow: none;
+        border-radius: 0;
+        margin: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Split background with wavy divider (exact SVG paths from Hero.tsx) -->
+    <div class="bg-split">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="shape-rendering: geometricPrecision;">
+        <path
+          d="M0 0 L50 0 C48 8, 55 14, 52 22 C49 30, 56 36, 53 44 C50 52, 57 58, 54 66 C51 74, 56 80, 53 88 C51 94, 54 97, 52 100 L0 100 Z"
+          fill="#FFC600"
+        />
+        <path
+          d="M100 0 L46 0 C44 8, 51 14, 48 22 C45 30, 52 36, 49 44 C46 52, 53 58, 50 66 C47 74, 52 80, 49 88 C47 94, 50 97, 48 100 L100 100 Z"
+          fill="#38AAD4"
+        />
+        <path
+          d="M48 0 C46 8, 53 14, 50 22 C47 30, 54 36, 51 44 C48 52, 55 58, 52 66 C49 74, 54 80, 51 88 C49 94, 52 97, 50 100"
+          fill="none"
+          stroke="#1A1A1A"
+          stroke-width="0.3"
+          stroke-linecap="round"
+          opacity="0.25"
+        />
+      </svg>
+    </div>
+
+    <!-- Kangaroo decoration (left side, above co-founders) -->
+    <img src="../public/images/decorations/kangaroo.png" alt="" class="decoration kangaroo">
+
+    <!-- Wattle flower decoration (top-right) -->
+    <img src="../public/images/decorations/wattle.png" alt="" class="decoration wattle-flower">
+
+    <!-- Cockatoo decoration (right side) -->
+    <img src="../public/images/decorations/cockatoo.png" alt="" class="decoration cockatoo">
+
+    <!-- Website -->
+    <div class="website">wattl.io</div>
+
+    <!-- Content -->
+    <div class="content">
+      <img src="../public/images/wattl-light.png" alt="Wattl." class="logo-img">
+      <div class="tagline-pill">Powerbank Rentals</div>
+    </div>
+
+    <!-- Contact details — bottom left, one line per co-founder -->
+    <div class="contacts">
+      <div class="contact-line">
+        <span class="contact-name">Hadi Mahmood</span><span class="contact-sep">|</span><span class="contact-role">Co-Founder</span><span class="contact-sep">|</span><span class="contact-phone">+61 423 234 799</span>
+      </div>
+      <div class="contact-line">
+        <span class="contact-name">Ewan Jacob</span><span class="contact-sep">|</span><span class="contact-role">Co-Founder</span><span class="contact-sep">|</span><span class="contact-phone">+61 452 522 497</span>
+      </div>
+    </div>
+
+    <!-- Email — bottom right -->
+    <div class="email">info@wattl.io</div>
+  </div>
+</body>
+</html>

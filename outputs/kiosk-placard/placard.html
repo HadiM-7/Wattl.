@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wattl Kiosk Top Placard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #1a1a2e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      gap: 60px;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    h1 span { color: #FFC600; }
+
+    .label {
+      color: #8a8aaf;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .variant-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* ====== PLACARD ====== */
+    /* 5" × 4" at 96 DPI screen = 480 × 384px display. We scale up 1.5x for clarity. */
+    .placard {
+      width: 720px;
+      height: 576px;
+      background: #003CA7;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+
+    /* Corner animal illustrations */
+    .corner-art {
+      position: absolute;
+      top: 8px;
+      height: 110px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .corner-art.left {
+      left: 40px;
+      top: 30px;
+      transform: scaleX(-1); /* flip cockatoo to face inward */
+    }
+    .corner-art.right {
+      right: 40px;
+      top: 30px;
+      transform: scaleX(-1); /* flip kangaroo to face inward */
+    }
+
+    /* ---- Fixed zone: Wordmark (top ~40%) ---- */
+    .wordmark-zone {
+      flex: 0 0 42%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      position: relative;
+    }
+
+    .wordmark-zone::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 20%;
+      right: 20%;
+      height: 1.5px;
+      background: #FFC600;
+      opacity: 0.3;
+      border-radius: 1px;
+    }
+
+    .wordmark {
+      position: relative;
+    }
+
+    .wordmark img {
+      height: 100px;
+      display: block;
+    }
+
+
+    /* ---- Swappable zone: Promo text (bottom ~58%) ---- */
+    .promo-zone {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px 40px;
+    }
+
+    .headline {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 62px;
+      color: #FFFFFF;
+      text-align: center;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .subline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      color: #FFC600;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    /* Evergreen variant — "$2" emphasis */
+    .price {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 80px;
+      color: #FFC600;
+    }
+
+    .price-label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.02em;
+    }
+
+    /* Print styles */
+    @media print {
+      body { background: #fff; padding: 0; gap: 40px; }
+      .placard { box-shadow: none; page-break-inside: avoid; }
+      h1, .label { color: #000; }
+    }
+
+    .specs {
+      color: #5a5a7a;
+      font-size: 12px;
+      max-width: 720px;
+      text-align: center;
+      line-height: 1.6;
+      margin-top: -20px;
+    }
+    .specs strong { color: #8a8aaf; }
+  </style>
+</head>
+<body>
+
+  <h1>Wattl<span>.</span> Kiosk Top Placard</h1>
+  <p class="specs">
+    <strong>Physical size:</strong> 5″ × 4″ &nbsp;|&nbsp;
+    <strong>Background:</strong> Deep Blue #003CA7 &nbsp;|&nbsp;
+    <strong>Construction:</strong> Fixed frame + swappable insert
+  </p>
+
+  <!-- ============ VARIANT 1: Launch Promo ============ -->
+  <div class="variant-wrapper">
+    <div class="label">Variant 1 — Launch Promo (Swappable Insert)</div>
+    <div class="placard">
+      <img class="corner-art left" src="../../inputs/branding/cartoons and plants/Cockatoo on a branch.png" alt="">
+      <img class="corner-art right" src="../../inputs/branding/cartoons and plants/Kangaroo.png" alt="">
+
+      <div class="wordmark-zone">
+        <div class="wordmark">
+          <img src="../../inputs/branding/wattl. logo green.svg" alt="Wattl.">
+        </div>
+      </div>
+
+      <div class="promo-zone">
+        <div class="headline">First charge FREE</div>
+        <div class="subline">Scan QR to start →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ VARIANT 2: Evergreen ============ -->
+  <div class="variant-wrapper">
+    <div class="label">Variant 2 — Evergreen / Default (Swappable Insert)</div>
+    <div class="placard">
+      <img class="corner-art left" src="../../inputs/branding/cartoons and plants/Cockatoo on a branch.png" alt="">
+      <img class="corner-art right" src="../../inputs/branding/cartoons and plants/Kangaroo.png" alt="">
+
+      <div class="wordmark-zone">
+        <div class="wordmark">
+          <img src="../../inputs/branding/wattl. logo green.svg" alt="Wattl.">
+        </div>
+      </div>
+
+      <div class="promo-zone">
+        <div class="headline" style="font-size: 42px; color: rgba(255,255,255,0.85);">Portable phone charger</div>
+        <div class="price">from $2</div>
+        <div class="price-label">Scan QR to start →</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
