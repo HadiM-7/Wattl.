@@ -8,14 +8,6 @@ import Image from "next/image";
 const testimonials = [
   {
     quote:
-      "My phone died right before the headliner at Glastonbury. Wattl literally saved my night. Found a station in seconds, grabbed a bank, and captured the entire finale.",
-    name: "Sarah Chen",
-    location: "Knockout 2025",
-    rotate: "-1deg",
-    shadowColor: "#38AAD4",
-  },
-  {
-    quote:
       "The fast charging is no joke. 15 minutes and the anxiety around my dead phone vanished. It's not just a convenience; it's essential hospitality gear now.",
     name: "Ash Berry",
     location: "Burwood RSL",
@@ -30,11 +22,19 @@ const testimonials = [
     rotate: "-0.5deg",
     shadowColor: "#E88D9D",
   },
+  {
+    quote:
+      "My phone was dying on the course and so too did the vibes and the Bluetooth speaker. Wattl was able to charge both of em in 30 mins. Super handy.",
+    name: "Greg Dillinger",
+    location: "Macquarie Links Golf Course",
+    rotate: "1deg",
+    shadowColor: "#208334",
+  },
 ];
 
 const stats = [
-  { value: 5, suffix: "+", label: "LOCATIONS" },
-  { value: 200, suffix: "+", label: "PHONES SAVED" },
+  { value: 50, suffix: "+", label: "LOCATIONS" },
+  { value: 20000, suffix: "+", label: "PHONES SAVED" },
 ];
 
 function AnimatedCounter({
